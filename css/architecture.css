@@ -1,0 +1,91 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    /*margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 0 60px;*/
+    padding: 20px 60px;
+    border-bottom: black 1px solid;
+}
+
+.header-container a {
+    text-decoration: none;
+    color: grey;
+}
+
+.header-container a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.header-container h1 a{
+    color: black;
+}
+
+.header-container h1{
+    margin: 0;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    width: 256px;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.padding {
+    margin-top: 40px;
+    padding: 0px 60px;
+}
+
+.center {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.projects {
+    margin: 0 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.project img {
+    width: 300px;
+
+}
+
+.project-header {
+    margin: 0;
+    font-weight: bold;
+}
+
+.project-decription {
+    margin: 0;
+    color: grey;
+}
