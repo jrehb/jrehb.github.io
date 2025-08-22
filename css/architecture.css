@@ -1,91 +1,239 @@
+html {
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .header-container {
-    display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    /*margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*margin-top: 20px;
     margin-bottom: 20px;
     padding: 0 60px;*/
-    padding: 20px 60px;
-    border-bottom: black 1px solid;
+  padding: 20px 60px;
+  border-bottom: black 1px solid;
 }
 
 .header-container a {
-    text-decoration: none;
-    color: grey;
+  text-decoration: none;
+  color: grey;
 }
 
 .header-container a:hover {
-    color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
-.header-container h1 a{
-    color: black;
+.navbar button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: grey;
+  cursor: pointer;
+  padding: 0;
 }
 
-.header-container h1{
-    margin: 0;
+.navbar button:hover {
+  color: black;
 }
+
+
+.header-container h1 a {
+  color: black;
+}
+
+.header-container h1 {
+  margin: 0;
+}
+
+
 
 
 .navbar {
-    display: flex;
-    justify-content: flex-end;
-    width: 256px;
-    margin-left: auto;
-    margin-top: 20px;
-    margin-bottom: 0;
-    font-weight: bolder;
+  display: flex;
+  justify-content: flex-end;
+  width: 256px;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-weight: none;
 }
 
 .navbar ul {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 
 .padding {
-    margin-top: 40px;
-    padding: 0px 60px;
+  margin-top: 40px;
+  padding: 0px 60px;
 }
 
 .center {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .projects {
-    margin: 0 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+  margin: 60px 5%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* immer 3 gleich breite Spalten */
+  gap: 20px;
 }
 
 .project {
-    width: 100%;
-    margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .project img {
-    width: 300px;
-
+  width: 100%;
+  height: auto;
 }
 
 .project-header {
-    margin: 0;
-    font-weight: bold;
+  margin: 0;
+  font-weight: bold;
 }
 
-.project-decription {
-    margin: 0;
-    color: grey;
+.project-description {
+  margin: 0;
+  color: grey;
+}
+
+/* From Uiverse.io by Praashoo7 */
+.card {
+  width: 17em;
+  height: 22.5em;
+  background: #171717;
+  transition: 1s ease-in-out;
+  clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  flex-direction: column;
+}
+
+#contact:popover-open {
+  display: flex;
+}
+
+#contact:not(:popover-open) {
+  display: none;
+}
+
+.card span {
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  display: block;
+  font-size: 1em;
+}
+
+.card .info {
+  font-weight: 400;
+  color: white;
+  display: block;
+  text-align: center;
+  font-size: 0.72em;
+  margin: 1em;
+}
+
+.card .img {
+  width: 4.8em;
+  height: 4.8em;
+  background: white;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.card .share {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.card a {
+  color: white;
+  transition: .4s ease-in-out;
+}
+
+.card a:hover {
+  color: red;
+}
+
+.card button {
+  padding: 0.8em 1.7em;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  transition: .4s ease-in-out;
+}
+
+.card button:hover {
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+
+body:has(#contact:popover-open) #main-content {
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .projects {
+    margin: 60px 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px auto;
+    border-bottom: black 1px solid;
+  }
+
+
+  .navbar {
+    display: flex;
+    justify-content: center;
+    width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: none;
+  }
+
+
+  .projects {
+    margin: 60px 5%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
 }
