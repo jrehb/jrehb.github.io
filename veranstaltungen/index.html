@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Veranstaltungen - OGV Kloppenheim</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/veranstaltungen.css">
     <link rel="shortcut icon" href="/images/logo_icon-32x32.png" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +43,7 @@
     </header>
 
     <!-- VERANSTALTUNGEN -->
-    <section class="section">
+<section class="section">
       <div class="container">
 
         <div class="event-filter">
@@ -107,87 +108,6 @@
     </footer>
 
     <script src="/js/script.js"></script>
-    <script>
-      (function () {
-        const heute = new Date();
-        heute.setHours(0, 0, 0, 0);
-
-        let zeigeVergangene = false;
-
-        const list = document.getElementById("eventList");
-        const noEvents = document.getElementById("noEvents");
-        const toggleBtn = document.getElementById("togglePast");
-
-        function formatDatum(event) {
-          if (event.datum_anzeige) return event.datum_anzeige;
-          const d = new Date(event.datum);
-          return d.toLocaleDateString("de-DE", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-          });
-        }
-
-        function renderEvents(events) {
-          list.innerHTML = "";
-
-          const gefiltert = events.filter((e) => {
-            const d = new Date(e.datum);
-            return zeigeVergangene ? d < heute : d >= heute;
-          });
-
-          if (gefiltert.length === 0) {
-            noEvents.style.display = "";
-            return;
-          }
-
-          noEvents.style.display = "none";
-
-          // vergangene umgekehrt sortieren (neueste zuerst), zukuenftige aufsteigend
-          const sortiert = [...gefiltert].sort((a, b) => {
-            const da = new Date(a.datum);
-            const db = new Date(b.datum);
-            return zeigeVergangene ? db - da : da - db;
-          });
-
-          sortiert.forEach((event) => {
-            const li = document.createElement("li");
-            li.className = "event-item";
-            if (zeigeVergangene) li.classList.add("event-item--past");
-
-            const desc = event.beschreibung
-              ? `<p class="event-desc">${event.beschreibung}</p>`
-              : "";
-
-            li.innerHTML = `
-              <p class="event-date">${formatDatum(event)}</p>
-              <p class="event-title">${event.titel}</p>
-              ${desc}
-            `;
-            list.appendChild(li);
-          });
-        }
-
-        fetch("/events.json")
-          .then((r) => r.json())
-          .then((events) => {
-            renderEvents(events);
-
-            toggleBtn.addEventListener("click", () => {
-              zeigeVergangene = !zeigeVergangene;
-              toggleBtn.textContent = zeigeVergangene
-                ? "Nur bevorstehende Termine anzeigen"
-                : "Vergangene Termine anzeigen";
-              renderEvents(events);
-            });
-          })
-          .catch((err) => {
-            console.error("Fehler beim Laden der Veranstaltungen:", err);
-            noEvents.textContent =
-              "Die Veranstaltungen konnten nicht geladen werden.";
-            noEvents.style.display = "";
-          });
-      })();
-    </script>
+    <script src="/js/veranstaltungen.js"></script>
   </body>
 </html>
