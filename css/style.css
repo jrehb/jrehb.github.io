@@ -23,6 +23,10 @@ html {
     scroll-behavior: smooth;
 }
 
+h1, h2, h3 {
+    scroll-margin-top: 88px; /* Höhe der Nav (68px) + etwas Luft */
+}
+
 body {
     font-family: "Lato", sans-serif;
     font-weight: 300;
@@ -193,7 +197,7 @@ nav ul li a:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 .btn-primary {
@@ -245,6 +249,14 @@ nav ul li a:hover {
     line-height: 1.25;
 }
 
+.section h3 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--green-dark);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
 .section a {
     text-decoration: none;
     color: var(--text-light);
@@ -261,7 +273,7 @@ nav ul li a:hover {
 }
 
 
-.btn-toggle-past {
+section .btn-toggle-past {
     background: transparent;
     border: 2px solid var(--green-light);
     color: var(--green-mid);
@@ -276,7 +288,7 @@ nav ul li a:hover {
     font-family: "Lato", sans-serif;
 }
 
-.btn-toggle-past:hover {
+section .btn-toggle-past:hover {
     background: var(--green-light);
     color: #fff;
     transform: translateY(-2px);
@@ -387,7 +399,7 @@ footer {
 footer a {
     color: var(--cream);
     text-decoration: none;
-    margin: 0 0.5rem;
+    /* margin: 0 0.5rem; */
 }
 
 footer a:hover {
@@ -493,8 +505,9 @@ footer a:hover {
 
     /* Über-uns Hero Buttons: untereinander auf kleinen Screens */
     .hero ul {
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
     }
 
     .hero ul li {
@@ -505,6 +518,10 @@ footer a:hover {
     .hero ul li .btn-primary {
         display: block;
         text-align: center;
+        font-size: 0.78rem;
+    padding: 0.75rem 0.8rem;
+    white-space: nowrap
+
     }
 
 } 
